@@ -1,0 +1,40 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450" Foreground="White"
+             xmlns:vm="clr-namespace:AvaloniaProject.ViewModels"
+             x:DataType="vm:DataPageViewModel"
+             x:Class="AvaloniaProject.Views.DataPageView">
+    <Design.DataContext>
+        <vm:DataPageViewModel></vm:DataPageViewModel>
+    </Design.DataContext>
+    
+    
+    <StackPanel>
+        <StackPanel>
+            <TextBlock>功能区</TextBlock>
+        </StackPanel>
+        
+        
+        <StackPanel>
+            <DataGrid Width="200" Height="200" Margin="20" ItemsSource="{Binding People}"
+                      IsReadOnly="True"
+                      GridLinesVisibility="All"
+                      BorderThickness="1" BorderBrush="Gray">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="名字" Width="*" 
+                                        Binding="{Binding FirstName}"/>
+                    <DataGridTextColumn Header="姓氏" Width="*" 
+                                        Binding="{Binding LastName}" />
+                </DataGrid.Columns>
+            </DataGrid>
+        </StackPanel>
+        
+        
+        
+    </StackPanel>
+    
+    
+    
+</UserControl>

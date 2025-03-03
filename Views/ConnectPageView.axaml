@@ -1,0 +1,73 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450" Foreground="White"
+             xmlns:vm="clr-namespace:AvaloniaProject.ViewModels"
+             x:DataType="vm:ConnectPageViewModel"
+             x:Class="AvaloniaProject.Views.ConnectPageView">
+
+    <Design.DataContext>
+        <vm:ConnectPageViewModel></vm:ConnectPageViewModel>
+    </Design.DataContext>
+
+
+    <Grid ColumnDefinitions="*,*" RowDefinitions="*,*">
+        <StackPanel Grid.Row="0" Grid.Column="0">
+            <!-- 连接信息 -->
+            <Border Height="150" BorderBrush="White" CornerRadius="3" Background="#323B5B" Padding="5" Margin="5 0">
+                <StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Width="130">IP Address:</TextBlock>
+                        <TextBox Width="150" Watermark="IP Address" />
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Width="130">CPU Type:</TextBlock>
+                        <TextBox Width="150" Watermark="CPU Type" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Width="130">Rack Number:</TextBlock>
+                        <TextBox Width="150" Watermark="Rack Number" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+
+                        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Width="130">Notch Number:</TextBlock>
+                        <TextBox Width="150" Watermark="Notch Number" />
+                    </StackPanel>
+                </StackPanel>
+                
+
+            </Border>
+        </StackPanel>
+        <StackPanel Grid.Row="0" Grid.Column="1">
+            <Button Content="Connect" Width="150" Height="150" HorizontalContentAlignment="Center"
+                    VerticalContentAlignment="Center">
+            </Button>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Grid.Column="0">
+            <!-- 连接状态 -->
+
+            <Border Height="150" BorderBrush="White" CornerRadius="3" Background="#323B5B" Padding="5" Margin="5 0">
+                <StackPanel>
+                    <TextBlock FontSize="24" FontWeight="Bold">Connect Info</TextBlock>
+                    <TextBlock FontSize="16" Foreground="Green">Connect Status：ok</TextBlock>
+                    <TextBlock FontSize="16">IP Address：192.168.1.1</TextBlock>
+                    <TextBlock FontSize="16">CPU Type：1200</TextBlock>
+                    <TextBlock FontSize="16">Rack Number：1</TextBlock>
+                    <TextBlock FontSize="16">Notch Number：2</TextBlock>
+                </StackPanel>
+            </Border>
+
+        </StackPanel>
+        <StackPanel Grid.Row="1" Grid.Column="1">
+            <Button Content="Disconnect" Width="150" Height="150" HorizontalContentAlignment="Center"
+                    VerticalContentAlignment="Center">
+            </Button>
+        </StackPanel>
+
+
+    </Grid>
+
+
+</UserControl>
