@@ -9,32 +9,78 @@
     <Design.DataContext>
         <vm:DataPageViewModel></vm:DataPageViewModel>
     </Design.DataContext>
-    
-    
+
+
     <StackPanel>
-        <StackPanel>
-            <TextBlock>功能区</TextBlock>
+        <StackPanel Orientation="Horizontal">
+            <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="16">DB:</TextBlock>
+            <TextBox Watermark="DB" />
+            <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="16">Offset:</TextBlock>
+            <TextBox Watermark="Offset" />
+            <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="16">DataType:</TextBlock>
+            <ComboBox SelectedIndex="0" MaxDropDownHeight="100">
+                <ComboBoxItem>String</ComboBoxItem>
+                <ComboBoxItem>Int</ComboBoxItem>
+                <ComboBoxItem>Bool</ComboBoxItem>
+                <ComboBoxItem>Byte</ComboBoxItem>
+                <ComboBoxItem>Diy</ComboBoxItem>
+            </ComboBox>
+            <!-- <TextBox Watermark="Input_DB_Type" /> -->
+            <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="16">Bit:</TextBlock>
+            <TextBox Watermark="Bit" />
+
+            <Button Content="Add"></Button>
+
+
+            <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="16">RealTimeRead:</TextBlock>
+            <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="16" Foreground="Chartreuse">ON</TextBlock>
+            <Button Content="ON"></Button>
+            <Button Content="OFF"></Button>
         </StackPanel>
-        
-        
-        <StackPanel>
-            <DataGrid Width="200" Height="200" Margin="20" ItemsSource="{Binding People}"
+
+
+        <DockPanel LastChildFill="True">
+            <DataGrid Width="750" Height="300" Margin="20" ItemsSource="{Binding People}"
                       IsReadOnly="True"
                       GridLinesVisibility="All"
                       BorderThickness="1" BorderBrush="Gray">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="名字" Width="*" 
-                                        Binding="{Binding FirstName}"/>
-                    <DataGridTextColumn Header="姓氏" Width="*" 
-                                        Binding="{Binding LastName}" />
+                    <DataGridTextColumn Header="DB" Width="80" />
+                    <DataGridTextColumn Header="Offset" Width="80" />
+                    <DataGridTextColumn Header="DataType" Width="100" />
+                    <DataGridTextColumn Header="ReadValue" Width="110" />
+                    <DataGridTextColumn Header="WriteValue" Width="110" />
+                    <DataGridTextColumn Header="Status" Width="80" />
+
+                    <DataGridTemplateColumn Header="Controls" Width="*">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <Button>
+                                        <StackPanel Orientation="Horizontal">
+                                            <Image Width="16" Source="{SvgImage /Assets/icons/cloud-arrow-down.svg}"></Image>
+                                        </StackPanel>
+                                    </Button>
+                                    <Button>
+                                        <StackPanel Orientation="Horizontal">
+                                            <Image Width="16" Source="{SvgImage /Assets/icons/cloud-arrow-up.svg}"></Image>
+                                        </StackPanel>
+                                    </Button>
+                                    <Button>
+                                        <StackPanel Orientation="Horizontal">
+                                            <Image Width="16" Source="{SvgImage /Assets/icons/broom.svg}"></Image>
+                                        </StackPanel>
+                                    </Button>
+                                </StackPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
                 </DataGrid.Columns>
             </DataGrid>
-        </StackPanel>
-        
-        
-        
+        </DockPanel>
+
+
     </StackPanel>
-    
-    
-    
+
+
 </UserControl>

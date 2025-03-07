@@ -9,5 +9,10 @@
     <Design.DataContext>
         <vm:LogPageViewModel></vm:LogPageViewModel>
     </Design.DataContext>
-    <Label Content="Welcome to Log Page!"></Label>
+
+
+    <StackPanel>
+        <TextBox Height="400" AcceptsReturn="True" TextWrapping="Wrap" IsReadOnly="True"/>
+    </StackPanel>
+
 </UserControl>
