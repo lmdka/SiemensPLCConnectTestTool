@@ -14,11 +14,17 @@
         <Setter Property="Background" Value="#323B5B"></Setter>
     </Style>
 
+    <Style Selector="Button:disabled /template/ ContentPresenter">
+        <Setter Property="FontSize" Value="18"></Setter>
+        <Setter Property="Foreground" Value="White"></Setter>
+        <Setter Property="Background" Value="#323B4B"></Setter>
+    </Style>
+
     <Style Selector="Button:pointerover /template/ ContentPresenter">
         <Setter Property="Foreground" Value="White"></Setter>
         <Setter Property="Background" Value="#6633DD"></Setter>
     </Style>
-    
+
     <Style Selector="Button.active /template/ ContentPresenter">
         <Setter Property="Foreground" Value="White"></Setter>
         <Setter Property="Background" Value="#6633DD"></Setter>

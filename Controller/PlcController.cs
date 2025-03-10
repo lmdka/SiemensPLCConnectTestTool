@@ -1,6 +1,7 @@
-﻿namespace AvaloniaProject.Controller;
+﻿using AvaloniaProject.Models;
 
-public class PlcController
+namespace AvaloniaProject.Controller;
+
+public static class PlcController
 {
-    
 }

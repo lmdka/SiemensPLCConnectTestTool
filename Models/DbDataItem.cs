@@ -1,11 +1,17 @@
 ﻿namespace AvaloniaProject.Models;
 
-public class DbDataItem
+public class DbDataItem(
+    string dbName,
+    string offset,
+    string dataType,
+    string readValue,
+    string writeValue,
+    string status)
 {
-    private string DbName { get; set; } = "";
-    private string Offset { get; set; } = "";
-    private string DataType { get; set; } = "";
-    private string ReadValue { get; set; } = "";
-    private string WriteValue { get; set; } = "";
-    private string Status { get; set; } = "";
+    public string DbName { get; set; } = dbName;
+    public string Offset { get; set; } = offset;
+    public string DataType { get; set; } = dataType;
+    public string ReadValue { get; set; } = readValue;
+    public string WriteValue { get; set; } = writeValue;
+    public string Status { get; set; } = status;
 }

@@ -13,64 +13,52 @@
 
     <StackPanel>
         <StackPanel Orientation="Horizontal">
-            <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="16">DB:</TextBlock>
-            <TextBox Watermark="DB" />
+            <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="16">DBName:</TextBlock>
+            <TextBox Watermark="DBName" Width="100" Text="{Binding InputDbName}" />
             <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="16">Offset:</TextBlock>
-            <TextBox Watermark="Offset" />
+            <TextBox Watermark="Offset" Width="100" Text="{Binding InputOffset}" />
             <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="16">DataType:</TextBlock>
-            <ComboBox SelectedIndex="0" MaxDropDownHeight="100">
-                <ComboBoxItem>String</ComboBoxItem>
-                <ComboBoxItem>Int</ComboBoxItem>
-                <ComboBoxItem>Bool</ComboBoxItem>
-                <ComboBoxItem>Byte</ComboBoxItem>
-                <ComboBoxItem>Diy</ComboBoxItem>
+            <ComboBox SelectedIndex="-1" MaxDropDownHeight="100" Width="100" ItemsSource="{Binding DataTypes}"
+                      SelectedItem="{Binding InputDataType}">
             </ComboBox>
             <!-- <TextBox Watermark="Input_DB_Type" /> -->
             <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="16">Bit:</TextBlock>
-            <TextBox Watermark="Bit" />
+            <TextBox Watermark="Bit" Width="100" Text="{Binding InputBit}" />
+            <Button Content="Add" Command="{Binding AddDbDataItemCommand}"></Button>
 
-            <Button Content="Add"></Button>
 
-
-            <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="16">RealTimeRead:</TextBlock>
-            <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="16" Foreground="Chartreuse">ON</TextBlock>
-            <Button Content="ON"></Button>
-            <Button Content="OFF"></Button>
         </StackPanel>
 
 
         <DockPanel LastChildFill="True">
-            <DataGrid Width="750" Height="300" Margin="20" ItemsSource="{Binding People}"
-                      IsReadOnly="True"
+            <DataGrid Width="750" Height="400" Margin="20" ItemsSource="{Binding DbDataItems}"
+                      IsReadOnly="False"
                       GridLinesVisibility="All"
-                      BorderThickness="1" BorderBrush="Gray">
+                      CanUserSortColumns="False"
+                      BorderThickness="1" BorderBrush="#6633DD" Background="#002949" Foreground="#fff">
+
+                <DataGrid.Styles>
+                    <!-- 修改表头样式 -->
+                    <Style Selector="DataGridColumnHeader">
+                        <Setter Property="Background" Value="#00193C" />
+                        <Setter Property="Foreground" Value="#fff" />
+                    </Style>
+                </DataGrid.Styles>
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="DB" Width="80" />
-                    <DataGridTextColumn Header="Offset" Width="80" />
-                    <DataGridTextColumn Header="DataType" Width="100" />
-                    <DataGridTextColumn Header="ReadValue" Width="110" />
-                    <DataGridTextColumn Header="WriteValue" Width="110" />
-                    <DataGridTextColumn Header="Status" Width="80" />
+                    <DataGridTextColumn Header="DbName" Width="100" Binding="{Binding DbName}" IsReadOnly="True" />
+                    <DataGridTextColumn Header="Offset" Width="80" Binding="{Binding Offset}" IsReadOnly="True" />
+                    <DataGridTextColumn Header="DataType" Width="100" Binding="{Binding DataType}" IsReadOnly="True" />
+                    <DataGridTextColumn Header="ReadValue" Width="110" Binding="{Binding ReadValue}" IsReadOnly="True" />
+                    <DataGridTextColumn Header="WriteValue" Width="110" Binding="{Binding WriteValue}" />
+                    <DataGridTextColumn Header="Status" Width="80" Binding="{Binding Status}" IsReadOnly="True" />
 
                     <DataGridTemplateColumn Header="Controls" Width="*">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal">
-                                    <Button>
-                                        <StackPanel Orientation="Horizontal">
-                                            <Image Width="16" Source="{SvgImage /Assets/icons/cloud-arrow-down.svg}"></Image>
-                                        </StackPanel>
-                                    </Button>
-                                    <Button>
-                                        <StackPanel Orientation="Horizontal">
-                                            <Image Width="16" Source="{SvgImage /Assets/icons/cloud-arrow-up.svg}"></Image>
-                                        </StackPanel>
-                                    </Button>
-                                    <Button>
-                                        <StackPanel Orientation="Horizontal">
-                                            <Image Width="16" Source="{SvgImage /Assets/icons/broom.svg}"></Image>
-                                        </StackPanel>
-                                    </Button>
+                                    <Button Content="Write" FontSize="12"></Button>
+                                    <Button Content="Read" FontSize="12"></Button>
+                                    <Button Content="Delete" FontSize="12"></Button>
                                 </StackPanel>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
@@ -79,7 +67,13 @@
             </DataGrid>
         </DockPanel>
 
-
+        <StackPanel Orientation="Horizontal">
+            <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="16">RealTimeReadStatus:</TextBlock>
+            <!-- <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="16" Foreground="Chartreuse">ON</TextBlock> -->
+            <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="16" Foreground="Red">OFF</TextBlock>
+            <Button Content="ON"></Button>
+            <!-- <Button Content="OFF"></Button> -->
+        </StackPanel>
     </StackPanel>
 
 

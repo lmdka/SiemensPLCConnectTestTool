@@ -15,54 +15,78 @@
     <Grid ColumnDefinitions="*,*" RowDefinitions="*,*">
         <StackPanel Grid.Row="0" Grid.Column="0">
             <!-- 连接信息 -->
-            <Border Height="150" BorderBrush="White" CornerRadius="3" Background="#323B5B" Padding="5" Margin="5 0">
+            <Border Height="200" Width="350" BorderBrush="White" CornerRadius="3" Background="#323B5B" Padding="20"
+                    Margin="5 0">
                 <StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Width="130">IP Address:</TextBlock>
-                        <TextBox Width="150" Watermark="IP Address" />
+                        <TextBox Width="150" Watermark="IP Address" Text="{Binding InputIpAddress }" />
                     </StackPanel>
-
                     <StackPanel Orientation="Horizontal">
                         <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Width="130">CPU Type:</TextBlock>
-                        <TextBox Width="150" Watermark="CPU Type" />
+                        <!-- <TextBox Width="150" Watermark="CPU Type" /> -->
+                        <ComboBox SelectedIndex="-1" MaxDropDownHeight="150" Width="150"
+                                  ItemsSource="{Binding CpuTypes}"
+                                  SelectedItem="{Binding InputCpuType}">
+                        </ComboBox>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Width="130">Rack Number:</TextBlock>
-                        <TextBox Width="150" Watermark="Rack Number" />
+                        <TextBox Width="150" Watermark="Rack Number" Text="{Binding InputRackNumber}" />
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
-
                         <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Width="130">Notch Number:</TextBlock>
-                        <TextBox Width="150" Watermark="Notch Number" />
+                        <TextBox Width="150" Watermark="Notch Number" Text="{Binding InputNotchNumber}" />
                     </StackPanel>
                 </StackPanel>
-                
+
 
             </Border>
         </StackPanel>
         <StackPanel Grid.Row="0" Grid.Column="1">
-            <Button Content="Connect" Width="150" Height="150" HorizontalContentAlignment="Center"
-                    VerticalContentAlignment="Center">
+            <Button Content="Connect" Width="200" Height="200" HorizontalContentAlignment="Center"
+                    VerticalContentAlignment="Center" Command="{Binding ConnectCommand}"
+                    IsEnabled="{Binding IsConnectButtonEnabled}">
             </Button>
         </StackPanel>
         <StackPanel Grid.Row="1" Grid.Column="0">
             <!-- 连接状态 -->
 
-            <Border Height="150" BorderBrush="White" CornerRadius="3" Background="#323B5B" Padding="5" Margin="5 0">
+            <Border Height="200" Width="350" BorderBrush="White" CornerRadius="3" Background="#323B5B" Padding="20"
+                    Margin="5 0">
                 <StackPanel>
                     <TextBlock FontSize="24" FontWeight="Bold">Connect Info</TextBlock>
-                    <TextBlock FontSize="16" Foreground="Green">Connect Status：ok</TextBlock>
-                    <TextBlock FontSize="16">IP Address：192.168.1.1</TextBlock>
-                    <TextBlock FontSize="16">CPU Type：1200</TextBlock>
-                    <TextBlock FontSize="16">Rack Number：1</TextBlock>
-                    <TextBlock FontSize="16">Notch Number：2</TextBlock>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock FontSize="16" Foreground="{Binding ConnectStatusColor}">Connect Status：</TextBlock>
+                        <TextBlock FontSize="16" Foreground="{Binding ConnectStatusColor}"
+                                   Text="{Binding ConnectStatus}">
+                        </TextBlock>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock FontSize="16">IP Address：</TextBlock>
+                        <TextBlock FontSize="16" Text="{Binding IpAddress}"></TextBlock>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock FontSize="16">CPU Type：</TextBlock>
+                        <TextBlock FontSize="16" Text="{Binding CpuType}"></TextBlock>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock FontSize="16">Rack Number：</TextBlock>
+                        <TextBlock FontSize="16" Text="{Binding RackNumber}"></TextBlock>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock FontSize="16">Notch Number：</TextBlock>
+                        <TextBlock FontSize="16" Text="{Binding NotchNumber}"></TextBlock>
+                    </StackPanel>
                 </StackPanel>
             </Border>
 
         </StackPanel>
         <StackPanel Grid.Row="1" Grid.Column="1">
-            <Button Content="Disconnect" Width="150" Height="150" HorizontalContentAlignment="Center"
-                    VerticalContentAlignment="Center">
+            <Button Content="Disconnect" Width="200" Height="200" HorizontalContentAlignment="Center"
+                    VerticalContentAlignment="Center" Command="{Binding DisconnectCommand}"
+                    IsEnabled="{Binding !IsConnectButtonEnabled}">
             </Button>
         </StackPanel>
 

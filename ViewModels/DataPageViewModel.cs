@@ -1,20 +1,47 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using AvaloniaProject.Models;
+using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 
 namespace AvaloniaProject.ViewModels;
 
-public class DataPageViewModel : ViewModelBase
+public partial class DataPageViewModel : ViewModelBase
 {
-    public ObservableCollection<Person> People { get; }
+    public ObservableCollection<DbDataItem> DbDataItems { get; }
 
     public DataPageViewModel()
     {
-        var people = new List<Person>
-        {
-            new Person("Neil", "Armstrong"),
-            new Person("Buzz", "Lightyear"),
-            new Person("James", "Kirk")
-        };
-        People = new ObservableCollection<Person>(people);
+        var list = new List<DbDataItem>();
+        DbDataItems = new ObservableCollection<DbDataItem>(list);
+    }
+
+    [ObservableProperty] private string _inputDataType = "";
+    [ObservableProperty] private string _inputDbName = "";
+    [ObservableProperty] private string _inputOffset = "";
+    [ObservableProperty] private string _inputBit = "";
+
+    public List<string> DataTypes { get; } =
+    [
+        "",
+        "string",
+        "bool",
+        "int",
+    ];
+
+
+    [RelayCommand]
+    private void AddDbDataItem()
+    {
+        if (InputDbName == "") return;
+        if (InputOffset == "") return;
+        if (InputDataType == "") return;
+        var item = new DbDataItem(InputDbName, InputOffset, InputDataType, "", "", "1");
+        DbDataItems.Add(item);
+
+        InputDbName = "";
+        InputOffset = "";
+        InputDataType = "";
+        InputBit = "";
     }
 }

@@ -22,7 +22,7 @@
 
         </ContentControl>
 
-        <Border Padding="20" Background="#010A34">
+        <Border Grid.Column="0" Padding="20" Background="#010A34">
             <Grid RowDefinitions="*,Auto">
                 <StackPanel Spacing="15">
                     <Image Width="200" Source="{SvgImage /Assets/siemens.svg}"></Image>
